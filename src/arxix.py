@@ -3,7 +3,6 @@ import sys
 import os
 import subprocess
 
-
 def get_paper_source(paper_id):
     paper_folder = f"paper_files_{paper_id}"
     filename=f"paper_{paper_id}.tar.gz"
@@ -42,6 +41,7 @@ def get_paper_as_txt(paper_id):
     folder_name = get_paper_source(paper_id)
     return detex(folder_name)
 
+# fake unit tests
 if __name__ == "__main__":
     if len(sys.argv) <= 1:
         print("Usage: python arxix.py [paper_id]")
