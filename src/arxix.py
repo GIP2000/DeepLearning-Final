@@ -3,19 +3,19 @@ import sys
 import os
 import subprocess
 
-def get_paper_source(paper_id):
+def get_paper_source_and_abstract(paper_id):
     paper_folder = f"paper_files_{paper_id}"
     filename=f"paper_{paper_id}.tar.gz"
     paper = next(arxiv.Search(id_list=[paper_id]).results())
     try:
         os.makedirs(paper_folder)
     except OSError:
-        return paper_folder
+        return paper_folder, paper.summary
     os.system(f'rm -rf ./{paper_folder}/*')
     paper.download_source(filename=filename)
     os.system(f"tar -xvf {filename} -C {paper_folder}")
     os.remove(filename)
-    return paper_folder
+    return paper_folder, paper.summary
 
 
 def detex(folder):
@@ -29,7 +29,7 @@ def detex(folder):
         for t in txt_l:
             ts = t.strip()
             if ts != b'':
-                txt_lf.append(ts)
+                txt_lf.append(str(ts))
         if len(txt_lf) == 0:
             continue
         files_as_txt += txt_lf
@@ -37,14 +37,14 @@ def detex(folder):
 
 
 
-def get_paper_as_txt(paper_id):
-    folder_name = get_paper_source(paper_id)
-    return detex(folder_name)
+def get_paper_as_txt_and_abstract(paper_id):
+    folder_name, abstract = get_paper_source_and_abstract(paper_id)
+    return detex(folder_name), abstract
 
 # fake unit tests
 if __name__ == "__main__":
     if len(sys.argv) <= 1:
         print("Usage: python arxix.py [paper_id]")
         exit(-1)
-    txt = get_paper_as_txt(sys.argv[1])
+    txt = get_paper_as_txt_and_abstract(sys.argv[1])
     print(txt)
