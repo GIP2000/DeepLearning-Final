@@ -24,8 +24,7 @@ def detex(folder):
     for file in os.listdir(folder):
         if not file.endswith(".tex"):
             continue
-        curdir = os.getcwd()
-        txt = subprocess.run([f"{curdir}/detex/detex", f"{curdir}/{folder}/{file}"], stdout=subprocess.PIPE).stdout
+        txt = subprocess.run([f"{os.getcwd()}/detex/detex", f"{os.getcwd()}/{folder}/{file}"], stdout=subprocess.PIPE).stdout
         txt_l = txt.split(b'\n')
         txt_lf = []
         for t in txt_l:
