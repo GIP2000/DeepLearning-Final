@@ -17,14 +17,14 @@ def main():
 
     np.random.shuffle(pars)
 
-    questions = [get_top_response(abstract)]
+    questions = [(abstract,get_top_response(abstract))]
     for par in pars[0:5]:
         print("starting next")
         question = get_top_response(par)
-        questions.append(question)
+        questions.append((par,question))
 
-    for i,question in enumerate(questions):
-        print(f"{i}. {question.strip()}")
+    for i,(par, question) in enumerate(questions):
+        print(f"{i}. input: {par}\n{question.strip()}")
 
 
 if __name__ == '__main__':
