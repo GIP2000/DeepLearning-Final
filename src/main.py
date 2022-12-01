@@ -3,7 +3,6 @@ from gpt3Handler import get_top_response,get_all_responses
 from arxix import get_paper_as_txt_and_abstract
 import sys
 
-
 MAX = 5
 
 def main():
@@ -16,9 +15,9 @@ def main():
 
     np.random.shuffle(pars)
 
-    questions = [(abstract,[a for a in get_all_responses(abstract)])]
+    questions = [(abstract,[response for response in get_all_responses(abstract)])]
     for par in pars[0:MAX]:
-        question = [a for a in get_all_responses(par)]
+        question = [response for response in get_all_responses(par)]
         questions.append((par,question))
 
     for i,(par, question) in enumerate(questions):
