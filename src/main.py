@@ -22,7 +22,7 @@ def main():
         questions.append((par,question))
 
     for i,(par, question) in enumerate(questions):
-        print(f"{i}. input: {par}\n{'<>'.join(question)}")
+        print(f"{i}. input: {par}\nQuestions: \n{'<>'.join(question)}")
 
 
 if __name__ == '__main__':

@@ -23,13 +23,13 @@ def detex(folder: str) -> [str]:
     for file in os.listdir(folder):
         if not file.endswith(".tex"):
             continue
-        txt = subprocess.run([f"{os.getcwd()}/detex/detex", f"{os.getcwd()}/{folder}/{file}"]
+        txt = subprocess.run(["pandoc","--from","latex","--to","plain","--no-highlight","--katex",f"{os.getcwd()}/{folder}/{file}"]
                              , stdout=subprocess.PIPE).stdout
-        txt_l = txt.split(b'\n')
+        txt_l = txt.split(b'\n\n')
         txt_lf = []
         for t in txt_l:
             ts = t.strip()
-            if ts != b'':
+            if ts != b'' and len(ts.split(b' ')) > 10:
                 txt_lf.append(str(ts))
         if len(txt_lf) == 0:
             continue
