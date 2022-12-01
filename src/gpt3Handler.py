@@ -2,7 +2,7 @@ import openai
 import os
 openai.api_key = os.getenv("OPEN_AI_API_KEY")
 
-def get_raw_gpt3_response(prompt):
+def get_raw_gpt3_response(prompt: str):
     return openai.Completion.create(
           model="text-davinci-002",
           prompt=prompt,
@@ -13,11 +13,15 @@ def get_raw_gpt3_response(prompt):
           presence_penalty=0
         )
 
-def get_top_response(prompt):
+def get_top_response(prompt: str):
     return get_raw_gpt3_response(build_prompt(prompt)).get("choices")[0]["text"]
 
+def get_all_responses(prompt: str):
+    for c in get_raw_gpt3_response(build_prompt(prompt)).get("choices"):
+        t = c["text"].strip()
+        yield t
 
-def build_prompt(prompt):
+def build_prompt(prompt: str):
     return f"""Given the Context what is a good question?
 Context:
 {prompt}

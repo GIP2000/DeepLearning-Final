@@ -3,7 +3,7 @@ import sys
 import os
 import subprocess
 
-def get_paper_source_and_abstract(paper_id):
+def get_paper_source_and_abstract(paper_id: str):
     paper_folder = f"paper_files_{paper_id}"
     filename=f"paper_{paper_id}.tar.gz"
     paper = next(arxiv.Search(id_list=[paper_id]).results())
@@ -18,12 +18,13 @@ def get_paper_source_and_abstract(paper_id):
     return paper_folder, paper.summary
 
 
-def detex(folder):
+def detex(folder: str) -> [str]:
     files_as_txt = []
     for file in os.listdir(folder):
         if not file.endswith(".tex"):
             continue
-        txt = subprocess.run([f"{os.getcwd()}/detex/detex", f"{os.getcwd()}/{folder}/{file}"], stdout=subprocess.PIPE).stdout
+        txt = subprocess.run([f"{os.getcwd()}/detex/detex", f"{os.getcwd()}/{folder}/{file}"]
+                             , stdout=subprocess.PIPE).stdout
         txt_l = txt.split(b'\n')
         txt_lf = []
         for t in txt_l:
@@ -37,7 +38,7 @@ def detex(folder):
 
 
 
-def get_paper_as_txt_and_abstract(paper_id):
+def get_paper_as_txt_and_abstract(paper_id) -> ([str], str):
     folder_name, abstract = get_paper_source_and_abstract(paper_id)
     return detex(folder_name), abstract
 
