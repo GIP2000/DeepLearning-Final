@@ -17,7 +17,7 @@ def main():
     np.random.shuffle(pars)
 
     questions = [(abstract,[a for a in get_all_responses(abstract)])]
-    for par in pars[0:5]:
+    for par in pars[0:MAX]:
         question = [a for a in get_all_responses(par)]
         questions.append((par,question))
 
