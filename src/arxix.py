@@ -37,7 +37,6 @@ def detex(folder: str) -> [str]:
     return files_as_txt
 
 
-
 def get_paper_as_txt_and_abstract(paper_id) -> ([str], str):
     folder_name, abstract = get_paper_source_and_abstract(paper_id)
     return detex(folder_name), abstract
