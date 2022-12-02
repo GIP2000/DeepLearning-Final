@@ -22,6 +22,7 @@ def main():
 
     for i,(par, question) in enumerate(questions):
         print(f"{i}.{par}")
+    print("=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>")
     for i,(par, question) in enumerate(questions):
         print(f"{i}.{'<>'.join(question)}")
 
