@@ -21,7 +21,9 @@ def main():
         questions.append((par,question))
 
     for i,(par, question) in enumerate(questions):
-        print(f"{i}. input: {par}\nQuestions: \n{'<>'.join(question)}")
+        print(f"{i}.{par}")
+    for i,(par, question) in enumerate(questions):
+        print(f"{i}.{'<>'.join(question)}")
 
 
 if __name__ == '__main__':

@@ -20,20 +20,22 @@ def get_paper_source_and_abstract(paper_id: str):
 
 def detex(folder: str) -> [str]:
     files_as_txt = []
-    for file in os.listdir(folder):
-        if not file.endswith(".tex"):
-            continue
-        txt = subprocess.run(["pandoc","--from","latex","--to","plain","--no-highlight","--katex",f"{os.getcwd()}/{folder}/{file}"]
-                             , stdout=subprocess.PIPE).stdout
-        txt_l = txt.split(b'\n\n')
-        txt_lf = []
-        for t in txt_l:
-            ts = t.strip()
-            if ts != b'' and len(ts.split(b' ')) > 10:
-                txt_lf.append(str(ts))
-        if len(txt_lf) == 0:
-            continue
-        files_as_txt += txt_lf
+
+    for root,dirs,files in os.walk(folder):
+        for file in files:
+            if not file.endswith(".tex"):
+                continue
+            txt = subprocess.run(["pandoc","--from","latex","--to","plain","--no-highlight","--katex",f"{os.getcwd()}/{root}/{file}"]
+                                 , stdout=subprocess.PIPE).stdout
+            txt_l = txt.split(b'\n\n')
+            txt_lf = []
+            for t in txt_l:
+                ts = t.strip()
+                if ts != b'' and len(ts.split(b' ')) > 10:
+                    txt_lf.append(str(ts))
+            if len(txt_lf) == 0:
+                continue
+            files_as_txt += txt_lf
     return files_as_txt
 
 
