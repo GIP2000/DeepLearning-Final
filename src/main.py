@@ -21,14 +21,14 @@ def main():
     bar = tqdm(pars)
     for par in bar:
         if size >= 2000:
-            print("BROKE EARLY")
+            print("BROKE EARLY too many questions to choose from.")
             break
         question = get_top_response(par)
         sleep(5) # I hate rate limits
         if question.useful:
-            size += len("".join(question))
+            size += len(" ".join(question.questions))
             questions.append((par, question))
-        bar.set_description(f"len = {size} / 2000")
+        bar.set_description(f"len = {size} / 2000: count {len(questions)}")
         bar.refresh()
 
     ranking = rank_prompt(questions).split("\n")
