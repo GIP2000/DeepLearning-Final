@@ -32,8 +32,11 @@ def main():
         bar.refresh()
 
     ranking = rank_prompt(questions).split("\n")
-    for q in ranking:
-        print(f"1. {q}")
+    for i,q in enumerate(ranking):
+        if i == 0:
+            print(f"{i}. {q}")
+            continue
+        print(q)
 
 
 if __name__ == '__main__':

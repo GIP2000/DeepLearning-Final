@@ -22,12 +22,12 @@ class Gpt3Response:
             return Gpt3Response(True, splt[1::],splt[0])
 
 
-def get_raw_gpt3_response(prompt: str):
+def get_raw_gpt3_response(prompt: str, max_tokens = 100):
     return openai.Completion.create(
           model="text-davinci-002",
           prompt=prompt,
           temperature=0.7,
-          max_tokens=100,
+          max_tokens=max_tokens,
           top_p=1,
           frequency_penalty=0,
           presence_penalty=0
@@ -50,7 +50,7 @@ def get_top_response(prompt: str):
 
 
 def rank_prompt(prompt: [(str, Gpt3Response)]):
-    return get_raw_gpt3_response(build_rank_prompt(prompt)).get("choices")[0]["text"]
+    return get_raw_gpt3_response(build_rank_prompt(prompt), 2000).get("choices")[0]["text"]
 
 
 def build_rank_prompt(respones: [(str, Gpt3Response)]):
