@@ -2,8 +2,9 @@ import numpy as np
 from gpt3Handler import get_top_response,get_all_responses
 from arxix import get_paper_as_txt_and_abstract
 import sys
-
-MAX = 5
+from tqdm import tqdm
+from time import sleep
+MAX = 15
 
 def main():
     if len(sys.argv) <= 1:
@@ -16,15 +17,16 @@ def main():
     np.random.shuffle(pars)
 
     questions = [(abstract,[response for response in get_all_responses(abstract)])]
-    for par in pars[0:MAX]:
+    for par in tqdm(pars[0:MAX]):
         question = [response for response in get_all_responses(par)]
         questions.append((par,question))
+        sleep(5)
 
-    for i,(par, question) in enumerate(questions):
+    for i,(par, question) in tqdm(enumerate(questions)):
         print(f"{i}.{par}")
     print("=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>")
     for i,(par, question) in enumerate(questions):
-        print(f"{i}.{'<>'.join(question)}")
+        print(f"\item {'<>'.join(question)}")
 
 
 if __name__ == '__main__':

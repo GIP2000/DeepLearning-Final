@@ -1,6 +1,7 @@
 import openai
 import os
-openai.api_key = os.getenv("OPEN_AI_API_KEY")
+openai.api_key = 0; 
+
 
 def get_raw_gpt3_response(prompt: str):
     return openai.Completion.create(
@@ -20,13 +21,36 @@ def get_all_responses(prompt: str):
     for c in get_raw_gpt3_response(build_prompt(prompt)).get("choices"):
         t = c["text"].strip()
         yield t
+# def build_prompt(prompt: str):
+#     return f"""Would it be useful for a student studying Deep Learning to read this paragraph?
+# Paragraph:
+# Reverse mode AD example, with\n  y\xe2\x80\x84=\xe2\x80\x84f(x\xe2\x82\x81,x\xe2\x82\x82)\xe2\x80\x84=\xe2\x80\x84ln\xe2\x80\x86(x\xe2\x82\x81)\xe2\x80\x85+\xe2\x80\x85x\xe2\x82\x81x\xe2\x82\x82\xe2\x80\x85\xe2\x88\x92\xe2\x80\x85sin\xe2\x80\x86(x\xe2\x82\x82) evaluated at (x\xe2\x82\x81,x\xe2\x82\x82)\xe2\x80\x84=\xe2\x80\x84(2,5).\n  After the forward evaluation of the primals on the left, the adjoint\n  operations on the right are evaluated in reverse\n  (cf.\xc2\xa0Figure\xc2\xa0[FigureBackpropagation]). Note that both\n  $\\frac{{partial y}}{{\partial x_1}}$ and\n  $\\frac{{\\partial y}}{{\\partial x_2}}$ are computed in the same reverse\n  pass, starting from the adjoint\n  $\\bar{{v}}_5 = \\bar{{y}} = \\frac{{\\partial y}}{{\\partial y}} = 1$.
+# Useful: No, it provides an example with no explanation.
+
+# Would it be useful for a student studying Deep Learning to read this paragraph?
+# Paragraph: 
+# {prompt}
+# Useful:
+# """
 
 def build_prompt(prompt: str):
-    return f"""Given the Context what is a good question?
-Context:
-{prompt}
+    return f"""Would it be useful for a student studying Deep Learning and Machine Learning to read this paragraph? What question would they be able to answer after reading this? What question they have about how this relates to the key claim of the paper?
+Paragraph:
+Reverse mode AD example, with\n  y\xe2\x80\x84=\xe2\x80\x84f(x\xe2\x82\x81,x\xe2\x82\x82)\xe2\x80\x84=\xe2\x80\x84ln\xe2\x80\x86(x\xe2\x82\x81)\xe2\x80\x85+\xe2\x80\x85x\xe2\x82\x81x\xe2\x82\x82\xe2\x80\x85\xe2\x88\x92\xe2\x80\x85sin\xe2\x80\x86(x\xe2\x82\x82) evaluated at (x\xe2\x82\x81,x\xe2\x82\x82)\xe2\x80\x84=\xe2\x80\x84(2,5).\n  After the forward evaluation of the primals on the left, the adjoint\n  operations on the right are evaluated in reverse\n  (cf.\xc2\xa0Figure\xc2\xa0[FigureBackpropagation]). Note that both\n  $\\frac{{partial y}}{{\partial x_1}}$ and\n  $\\frac{{\\partial y}}{{\\partial x_2}}$ are computed in the same reverse\n  pass, starting from the adjoint\n  $\\bar{{v}}_5 = \\bar{{y}} = \\frac{{\\partial y}}{{\\partial y}} = 1$.
+Useful: No, it provides an example with no explanation.
 
-Question:"""
+Would it be useful for a student studying Deep Learning and Machine Learning to read this paragraph? What question would they be able to answer after reading this? What question they have about how this relates to the key claim of the paper?
+Paragraph:
+The term \xe2\x80\x9cautomatic\xe2\x80\x9d in AD can be a source of confusion, causing machine\nlearning practitioners to put the label \xe2\x80\x9cautomatic differentiation\xe2\x80\x9d, or\njust \xe2\x80\x9cautodiff\xe2\x80\x9d, on any method or tool that does not involve manual\ndifferentiation, without giving due attention to the underlying\nmechanism. We would like to stress that AD as a technical term refers to\na specific family of techniques that compute derivatives through\naccumulation of values during code execution to generate numerical\nderivative evaluations rather than derivative expressions. This allows\naccurate evaluation of derivatives at machine precision with only a\nsmall constant factor of overhead and ideal asymptotic efficiency. In\ncontrast with the effort involved in arranging code as closed-form\nexpressions under the syntactic and semantic constraints of symbolic\ndifferentiation, AD can be applied to regular code with minimal change,\nallowing branching, loops, and recursion. Because of this generality, AD\nhas been applied to computer simulations in industry and academia and\nfound applications in fields including engineering design optimization ,\ncomputational fluid dynamics , physical modeling , optimal control ,\nstructural mechanics , atmospheric sciences , and computational finance\n.
+Useful: Yes.
+Question: Compare and contrast symbolic, numeric, and automatic differentiation?
+Question: Why is automatic differentiation used in deep learning?
+
+Would it be useful for a student studying Deep Learning and Machine Learning to read this paragraph? What question would they be able to answer after reading this? What question they have about how this relates to the key claim of the paper?
+Paragraph:
+{prompt}
+Useful:
+"""
 
 
 # fake unit tests

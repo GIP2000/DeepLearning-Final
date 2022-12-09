@@ -31,7 +31,7 @@ def detex(folder: str) -> [str]:
             txt_lf = []
             for t in txt_l:
                 ts = t.strip()
-                if ts != b'' and len(ts.split(b' ')) > 10:
+                if ts != b'' and len(ts.split(b' ')) > 20:
                     txt_lf.append(str(ts))
             if len(txt_lf) == 0:
                 continue
