@@ -1,6 +1,25 @@
 import openai
 import os
-openai.api_key = 0; 
+openai.api_key = os.getenv("OPEN_AI_API_KEY");
+
+class Gpt3Response:
+
+    def __init__(self, useful, questions, useful_reason):
+        self.useful = useful
+        self.useful_reason = useful_reason
+        self.questions = questions
+
+    def __str__(self):
+        return "<>".join(self.questions)
+
+    @staticmethod
+    def parse_response(resp: str):
+        splt = resp.split("Question:")
+        splt[0] = splt[0].strip()
+        if splt[0].startswith("No"):
+            return Gpt3Response(False, [], splt[0])
+        else:
+            return Gpt3Response(True, splt[1::],splt[0])
 
 
 def get_raw_gpt3_response(prompt: str):
@@ -15,12 +34,8 @@ def get_raw_gpt3_response(prompt: str):
         )
 
 def get_top_response(prompt: str):
-    return get_raw_gpt3_response(build_prompt(prompt)).get("choices")[0]["text"]
+    return Gpt3Response.parse_response(get_raw_gpt3_response(build_prompt(prompt)).get("choices")[0]["text"])
 
-def get_all_responses(prompt: str):
-    for c in get_raw_gpt3_response(build_prompt(prompt)).get("choices"):
-        t = c["text"].strip()
-        yield t
 # def build_prompt(prompt: str):
 #     return f"""Would it be useful for a student studying Deep Learning to read this paragraph?
 # Paragraph:
@@ -28,10 +43,27 @@ def get_all_responses(prompt: str):
 # Useful: No, it provides an example with no explanation.
 
 # Would it be useful for a student studying Deep Learning to read this paragraph?
-# Paragraph: 
+# Paragraph:
 # {prompt}
 # Useful:
 # """
+
+
+def rank_prompt(prompt: [(str, Gpt3Response)]):
+    return get_raw_gpt3_response(build_rank_prompt(prompt)).get("choices")[0]["text"]
+
+
+def build_rank_prompt(respones: [(str, Gpt3Response)]):
+    question_str = ""
+    counter = 0
+    for _,resp in respones:
+        for question in resp.questions:
+            question_str += f"{counter}. {question.strip()}\n"
+            counter += 1
+    return f"Ranks these questions based on quality testing a student's overall understanding of deep learning\n{question_str}Rank:\n 1."
+
+
+
 
 def build_prompt(prompt: str):
     return f"""Would it be useful for a student studying Deep Learning and Machine Learning to read this paragraph? What question would they be able to answer after reading this? What question they have about how this relates to the key claim of the paper?
