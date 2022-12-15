@@ -2,7 +2,7 @@ import openai
 import os
 # from random import randint
 
-n = 1
+n = 0
 
 class Gpt3Response:
 
@@ -28,10 +28,10 @@ def get_raw_gpt3_response(prompt: str, max_tokens = 100):
     global n
     openai.api_key = os.getenv(f"OPEN_AI_API_KEY{n}");
     n += 1
-    n %= 4
+    n %= 5
 
     return openai.Completion.create(
-          model="text-davinci-002",
+          model="text-davinci-003",
           prompt=prompt,
           temperature=0.7,
           max_tokens=max_tokens,

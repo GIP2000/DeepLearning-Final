@@ -1,8 +1,10 @@
+from random import randint
 def make_latex(input: [str]) -> str:
     return "\n".join(["\item " + s for s in input])
 
 def put_into_latex(questions: [str], output_file: str):
-    output_str = "\documentclass{article}\n\\usepackage[utf8]{inputenc}\n\\usepackage{lineno}\n\\title{Quiz \#31415}\n\\author{Fake Chris}\n\linenumbers[314]\n\\begin{document}\n\maketitle\n\huge\n\\begin{enumerate}\n" + make_latex(questions) + "\end{enumerate}\n\end{document}"
+    pim = randint(1,1_000_000)
+    output_str = "\documentclass{article}\n\\usepackage[inline]{enumitem}\n\\usepackage{baked}\n\\usepackage[left=1.5in, right=2in, top=0.45in, bottom=0.45in]{geometry}\n\\begin{document}\nECE-467, Deep Learning - Quiz $" + str(pim) + "\pi$\\begin{enumerate}\n" + make_latex(questions) + "\n\end{enumerate}\n\end{document}"
     with open(output_file, 'w') as f:
         f.write(output_str)
 

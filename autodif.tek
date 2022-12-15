@@ -1,0 +1,18 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{lineno}
+\title{Quiz \#31415}
+\author{Fake Chris}
+\linenumbers[314]
+\begin{document}
+\maketitle
+\huge
+\begin{enumerate}
+\item  How do these loss functions compare to each other?
+\item  What is style transfer?
+\item  What are some early approaches to style transfer?
+\item  What is the Gatys style transfer method?
+\item  What is the content-style trade-off?
+\item  How does this relate to the key claim of the paper?
+\item  What is the difference between BN and IN?\end{enumerate}
+\end{document}

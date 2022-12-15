@@ -1,0 +1,35 @@
+\documentclass{article}
+\usepackage[inline]{enumitem}
+\usepackage{baked}
+\usepackage[left=1.5in, right=2in, top=0.45in, bottom=0.45in]{geometry}
+\begin{document}
+ECE-467, Deep Learning - Quiz $563095\pi$\begin{enumerate}
+\item  How long did it take to train the big models?
+\item  What hardware was used to train the models?
+\item  What are the two most commonly used attention functions?
+\item  What is the difference between dot-product and additive attention?
+\item  What is the WMT 2014 English-German dataset?
+\item  What is byte-pair encoding?
+\item  What is the WMT 2014 English-French dataset?
+\item  Why is the dot product of two vectors scaled down by the square root of the dimension of the vectors?
+\item  What is the path length between long-range dependencies in a neural network?
+\item  How does the path length affect the ability to learn long-range dependencies?
+\item  How does the complexity of a separable convolution compare to a self-attention layer and a point-wise feed-forward layer?
+\item  What is the benefits of performing the attention function in parallel?
+\item  How does the number of floating point operations used to train a model compare to other model architectures from the literature?
+\item  How does the translation quality and training costs compare to other model architectures from the literature?
+\item  What is the goal of reducing sequential computation?
+\item  How do the models achieve this goal?
+\item  What are the benefits of reducing sequential computation?
+\item  What is the BLEU score of the Transformer (big) model?
+\item  What is the training cost of the Transformer (big) model?
+\item  What is the Transformer?
+\item  What are the benefits of using self-attention?
+\item  What are the benefits of using attention layers in a deep learning model?
+\item  What is an encoder-decoder model?
+\item  How does an encoder-decoder model work?
+\item  Why does additive attention outperform dot product attention for larger values of d_(k)?
+\item  What is the best parser according to this table?
+\item  What is the difference between discriminative and generative parsers?
+\end{enumerate}
+\end{document}

@@ -27,6 +27,7 @@ def detex(folder: str) -> [str]:
                 continue
             txt = subprocess.run(["pandoc","--from","latex","--to","plain","--no-highlight","--katex",f"{os.getcwd()}/{root}/{file}"]
                                  , stdout=subprocess.PIPE).stdout
+            print(txt)
             txt_l = txt.split(b'\n\n')
             txt_lf = []
             for t in txt_l:

@@ -14,6 +14,7 @@ def get_values(paper_id):
         return["Don't write your name. Did you read the paper? Be Honest."]
 
     pars,_ = get_paper_as_txt_and_abstract(paper_id)
+    print(pars)
 
     np.random.shuffle(pars)
 
@@ -37,7 +38,8 @@ def get_values(paper_id):
 
     ranking = rank_prompt(questions).split('\n');
     print(ranking)
-    return [re.split('\d+ ?\.', q)[1] for i,q in enumerate(ranking) if i < 7]
+    ranking = [re.split('\d+ ?\.', q) for i,q in enumerate(ranking) if q != '']
+    return [q[1] for i,q in enumerate(ranking)]
 
 if __name__ == '__main__':
     if len(sys.argv) <= 2:
