@@ -1,6 +1,8 @@
 import openai
 import os
-openai.api_key = os.getenv("OPEN_AI_API_KEY");
+# from random import randint
+
+n = 1
 
 class Gpt3Response:
 
@@ -23,6 +25,11 @@ class Gpt3Response:
 
 
 def get_raw_gpt3_response(prompt: str, max_tokens = 100):
+    global n
+    openai.api_key = os.getenv(f"OPEN_AI_API_KEY{n}");
+    n += 1
+    n %= 4
+
     return openai.Completion.create(
           model="text-davinci-002",
           prompt=prompt,
@@ -50,7 +57,7 @@ def get_top_response(prompt: str):
 
 
 def rank_prompt(prompt: [(str, Gpt3Response)]):
-    return get_raw_gpt3_response(build_rank_prompt(prompt), 2000).get("choices")[0]["text"]
+    return "1." + get_raw_gpt3_response(build_rank_prompt(prompt), 2000).get("choices")[0]["text"]
 
 
 def build_rank_prompt(respones: [(str, Gpt3Response)]):

@@ -1,0 +1,12 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{lineno}
+\title{Quiz \#31415}
+\author{Fake Chris}
+\linenumbers[314]
+\begin{document}
+\maketitle
+\huge
+\begin{enumerate}
+\item Don't write your name. Did you read the paper? Be Honest.\end{enumerate}
+\end{document}
