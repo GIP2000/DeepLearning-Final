@@ -3,33 +3,28 @@
 \usepackage{baked}
 \usepackage[left=1.5in, right=2in, top=0.45in, bottom=0.45in]{geometry}
 \begin{document}
-ECE-467, Deep Learning - Quiz $563095\pi$\begin{enumerate}
-\item  How long did it take to train the big models?
-\item  What hardware was used to train the models?
+ECE-467, Deep Learning - Quiz $326037\pi$\begin{enumerate}
+\item  How does the Transformer model use embeddings to convert input and output tokens to vectors?
+\item  How does the Transformer model differ from other sequence transduction models in terms of weight sharing between the two embedding layers and the pre-softmax linear transformation?
+\item  What is the Transformer network architecture, and how does it improve upon existing models for machine translation tasks?
+\item  How does the Transformer model compare to other models in terms of performance, training costs, and parallelizability?
 \item  What are the two most commonly used attention functions?
-\item  What is the difference between dot-product and additive attention?
-\item  What is the WMT 2014 English-German dataset?
-\item  What is byte-pair encoding?
-\item  What is the WMT 2014 English-French dataset?
-\item  Why is the dot product of two vectors scaled down by the square root of the dimension of the vectors?
-\item  What is the path length between long-range dependencies in a neural network?
-\item  How does the path length affect the ability to learn long-range dependencies?
-\item  How does the complexity of a separable convolution compare to a self-attention layer and a point-wise feed-forward layer?
-\item  What is the benefits of performing the attention function in parallel?
-\item  How does the number of floating point operations used to train a model compare to other model architectures from the literature?
-\item  How does the translation quality and training costs compare to other model architectures from the literature?
-\item  What is the goal of reducing sequential computation?
-\item  How do the models achieve this goal?
-\item  What are the benefits of reducing sequential computation?
-\item  What is the BLEU score of the Transformer (big) model?
-\item  What is the training cost of the Transformer (big) model?
-\item  What is the Transformer?
-\item  What are the benefits of using self-attention?
-\item  What are the benefits of using attention layers in a deep learning model?
-\item  What is an encoder-decoder model?
-\item  How does an encoder-decoder model work?
-\item  Why does additive attention outperform dot product attention for larger values of d_(k)?
-\item  What is the best parser according to this table?
-\item  What is the difference between discriminative and generative parsers?
+\item  How is dot-product attention different from additive attention?
+\item  How does the Transformer architecture improve machine translation tasks?
+\item  What are the advantages of the Transformer architecture compared to recurrent or convolutional layers?
+\item  What are the advantages of the Transformer model over other models such as RNNs and convolutional neural networks?
+\item  What is the purpose of scaling dot-products in scaled dot-product attention?
+\item  How does the Transformer reduce the number of operations required to relate signals from two arbitrary input or output positions compared to other models?
+\item  How does the Transformer counteract the effect of reduced effective resolution due to averaging attention-weighted positions?
+\item  How does the Transformer compare to RNN sequence-to-sequence models?
+\item  How does the Transformer perform when trained on a limited amount of data?
+\item  What is the Transformer and how does it compare to other sequence transduction models?
+\item  How is the Transformer model superior in quality while being more parallelizable and requiring significantly less time to train?
+\item  What is the Transformer architecture?
+\item  How does the Transformer architecture use attention mechanisms to achieve superior results in machine translation tasks?
+\item  What are positional encodings and how do they help the Transformer model make use of the order of the sequence?
+\item  What is the Transformer model architecture and how does it differ from other models?
+\item  How does the Transformer model compare in quality and training costs to other models from the literature?
+\item  What is multi-head attention and how does it help the model?
 \end{enumerate}
 \end{document}

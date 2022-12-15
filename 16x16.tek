@@ -3,36 +3,27 @@
 \usepackage{baked}
 \usepackage[left=1.5in, right=2in, top=0.45in, bottom=0.45in]{geometry}
 \begin{document}
-ECE-467, Deep Learning - Quiz $285281\pi$\begin{enumerate}
-\item  What are the benefits of automatic differentiation?
-\item  What is the difference between absolute and relative positional embeddings?
-\item  How are relative positional embeddings used in the attention mechanism?
-\item  What are some of the challenges in applying deep learning to computer vision tasks?
-\item  What is the difference between self-supervised and supervised pre-training?
-\item  What are the representation learning capabilities of ResNet and the hybrid?
-\item  What is the computational cost of pre-training the model?
-\item  What is the self-supervision experiment?
-\item  What are some different types of models that can be used for transfer learning?
-\item  What is the difference between pre-training for 7 epochs and pre-training for 14 epochs?
-\item  What is the difference between inference and backprop speed?
-\item  What is the difference between a regular ResNet and a BiT ResNet?
-\item  What is the difference between a ResNet with and without stage 4?
-\item  What is the best model for image recognition?
-\item  What is the accuracy of the best model?
-\item  How does the standard Transformer model work?
-\item  How does the Transformer model work with 2D images?
-\item  What is axial attention?
-\item  How does axial attention differ from traditional self-attention?
-\item  How is axial attention used in the AxialResNet model?
-\item  What is the best way to scale a Transformer architecture?
-\item  What are the benefits of scaling depth over width?
-\item  What is the dominant approach to training self-attention-based architectures?
-\item  What are the benefits of Transformers' computational efficiency and scalability?
-\item  What is the difference between self-attention and Transformers?
-\item  How do you interpret an image as a sequence of patches?
-\item  What is the transfer performance of different models pre-trained on ImageNet, ImageNet-21k, and JFT-300M?
-\item  What is the transfer performance of , ResNet, and hybrid models of varying size, as well as the estimated computational cost of their pre-training?
-\item  What is the difference between B/16 and L/16?
-\item  What is the difference between ImageNet-21k and JFT-300M?
+ECE-467, Deep Learning - Quiz $373866\pi$\begin{enumerate}
+\item  How does the average attention distance change across layers in a Vision Transformer?
+\item  What are some approximations that have been attempted in order to apply Transformers in the context of image processing?
+\item  How do Sparse Transformers and specialized attention architectures help to scale attention for computer vision tasks?
+\item  How important is dataset size when using a Vision Transformer?
+\item  How does the Vision Transformer (ViT) differ from traditional convolutional networks?
+\item  How does the Axial Transformer block work?
+\item  How do convolutional networks and self-attention compare in computer vision tasks?
+\item  What challenges have prevented the successful scaling of self-attention in large-scale image recognition tasks?
+\item  How can a Vision Transformer be used to replace components of a convolutional network?
+\item  How can a Vision Transformer be used to create an input sequence from a CNN feature map?
+\item  How does the performance of Convolutional Neural Networks (CNNs) compare to Vision Transformers (ViT) when applied to image recognition tasks?
+\item  How does training on large datasets affect the performance of CNNs and ViTs?
+\item  What is the advantage of using a scalable NLP Transformer architecture for computer vision tasks? What are the efficient implementations of this architecture? How does this setup compare to state-of-the-art convolutional networks?
+\item  What are the differences between theoretical FLOPs and inference speed on hardware?
+\item  What challenges remain for Vision Transformer (ViT)?
+\item  How do self-supervised pre-training methods affect the performance of ViT?
+\item  How can a Vision Transformer (ViT) be used to perform well on image classification tasks?
+\item  What are the advantages of using a Transformer over a convolutional network for computer vision tasks?
+\item  How does the Transformer architecture integrate information across an entire image?
+\item  What is the "attention distance" and how does it compare to receptive field size in CNNs?
+\item  How does self-attention integrate information across an image?
 \end{enumerate}
 \end{document}

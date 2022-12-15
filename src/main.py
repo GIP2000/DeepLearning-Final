@@ -11,9 +11,9 @@ import re
 def get_values(paper_id):
 
     if randint(1,15) == 5:
-        return["Don't write your name. Did you read the paper? Be Honest."]
+        return["Don't write your name. Did you read the paper? Be honest."]
 
-    pars,_ = get_paper_as_txt_and_abstract(paper_id)
+    pars,abstract = get_paper_as_txt_and_abstract(paper_id)
     print(pars)
 
     np.random.shuffle(pars)
@@ -27,7 +27,7 @@ def get_values(paper_id):
         if size >= 2000:
             print("BROKE EARLY too many questions to choose from.")
             break
-        question = get_top_response(par)
+        question = get_top_response(par, abstract)
         # sleep(5) # I hate rate limits
         if question.useful:
             size += len(" ".join(question.questions))
